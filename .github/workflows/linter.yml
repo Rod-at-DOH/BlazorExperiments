@@ -5,3 +5,17 @@ on:
     branches-ignore: [master, main]
   pull_request:
     branches: [master, main]
+
+jobs:
+  build:
+    name: Lint Code Base
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Lint Code Base Step
+        uses: github/super-linter@v4
