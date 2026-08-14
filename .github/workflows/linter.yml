@@ -1,8 +1,6 @@
 name: Lint Code Base
 
 on: 
-  push:
-    branches-ignore: [master, main]
   pull_request:
     branches: [master, main]
 
@@ -18,7 +16,10 @@ jobs:
           fetch-depth: 0
 
       - name: Lint Code Base Step
-        uses: github/super-linter@v4
+        uses: super-linter/super-linter@v8.7.0  # it was github/super-linter@v4
         env:
           VALIDATE_ALL_CODEBASE: true
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          IGNORE_GITIGNORED_FILES: true
+          VALIDATE_JAVASCRIPT_ESLINT: true
+          VALIDATE_HTML: true
